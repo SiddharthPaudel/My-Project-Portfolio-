@@ -1,0 +1,1 @@
+import{j as e}from"./index-DbvKszWz.js";const c=()=>e.jsx("div",{className:"flex items-center justify-center py-28",children:e.jsxs("div",{className:"cube-loader",children:[e.jsx("div",{className:"cube cube-1"}),e.jsx("div",{className:"cube cube-2"}),e.jsx("div",{className:"cube cube-3"}),e.jsx("div",{className:"cube cube-4"})]})});export{c as default};

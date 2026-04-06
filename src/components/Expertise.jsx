@@ -13,7 +13,12 @@ const Expertise = () => {
     },
     {
       title: "Database & Tools",
-      skills: ["MongoDB", "SQL", "Git/GitHub", "Agile", "Postman"],
+      skills: ["MongoDB", "SQL", "Git/GitHub", "Docker", "Postman"],
+    },
+    {
+      title: "UI/UX Engineering",
+      // Focus on the logic of the interface and the user's journey
+      skills: ["Figma", "Prototyping", "User Research", "Wireframing", "Design Systems"],
     },
   ];
 
@@ -23,9 +28,7 @@ const Expertise = () => {
         id="skills" 
         className="relative max-w-full overflow-hidden bg-white py-32 border-t border-slate-50"
       >
-        {/* Starfield/Canvas Layer has been removed for a clean, minimalist look */}
-
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="mb-20 text-center lg:text-left">
             <m.div
                initial={{ opacity: 0, x: -20 }}
@@ -49,7 +52,7 @@ const Expertise = () => {
             </m.h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
             {skillCategories.map((cat, i) => (
               <m.div
                 initial={{ opacity: 0, y: 30 }}
@@ -68,7 +71,7 @@ const Expertise = () => {
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-5 py-2.5 bg-white border border-slate-100 text-slate-500 text-[11px] font-bold uppercase tracking-widest rounded-full hover:border-slate-900 hover:text-slate-900 hover:shadow-lg transition-all duration-500 cursor-default"
+                      className="px-5 py-2.5 bg-white border border-slate-100 text-slate-500 text-[10px] md:text-[11px] font-bold uppercase tracking-widest rounded-full hover:border-slate-900 hover:text-slate-900 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 cursor-default"
                     >
                       {skill}
                     </span>
