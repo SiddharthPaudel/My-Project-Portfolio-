@@ -1,11 +1,12 @@
 import React, { memo, useState, useEffect } from "react";
 import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
+import { LayoutGrid, User, Code, Send } from "lucide-react";
 
 const navItems = [
-  { label: "Expertise", href: "#skills" },
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#projects" },
-  { label: "Hire Me", href: "#contact" },
+  { label: "Expertise", href: "#skills", icon: LayoutGrid },
+  { label: "About", href: "#about", icon: User },
+  { label: "Work", href: "#projects", icon: Code },
+  { label: "Contact", href: "#contact", icon: Send },
 ];
 
 const Header = memo(() => {
@@ -14,7 +15,8 @@ const Header = memo(() => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      // Threshold for the "Island" to contract
+      setIsScrolled(window.scrollY > 50);
 
       const sectionIds = ["skills", "about", "projects", "contact"];
       let currentSection = "home";
@@ -28,7 +30,7 @@ const Header = memo(() => {
         const section = document.getElementById(id);
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
+          if (rect.top <= 300 && rect.bottom >= 300) {
             currentSection = id;
             break;
           }
@@ -51,74 +53,104 @@ const Header = memo(() => {
 
   return (
     <LazyMotion features={domAnimation}>
-      {/* Root Header Tag */}
       <m.header
-        initial={{ y: -20, opacity: 0 }}
+        initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-8 left-0 right-0 z-[100] flex justify-center px-6 md:px-12 pointer-events-none"
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-0 left-0 right-0 z-[100] flex justify-center p-4 md:p-8 pointer-events-none"
       >
-        <div className="flex items-center justify-between w-full max-w-7xl">
+        <m.div 
+          layout
+          className={`
+            pointer-events-auto flex items-center justify-between overflow-hidden
+            rounded-full border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
+            ${isScrolled 
+              ? "bg-slate-950/90 backdrop-blur-2xl border-white/10 shadow-2xl px-2 py-2 w-auto gap-2 md:gap-6" 
+              : "bg-white/70 backdrop-blur-md border-slate-200/50 px-4 md:px-6 py-3 w-full max-w-5xl gap-4 md:gap-8"
+            }
+          `}
+        >
           
-          {/* LEFT SIDE: NAME / LOGO */}
-          <div className="pointer-events-auto">
+          {/* BRANDING / NAME */}
+          <m.div layout className="flex items-center pl-2">
             <a 
               href="#home" 
               onClick={scrollToTop}
-              className="group flex flex-col"
+              className="group flex items-center gap-2"
             >
-              <span className="text-[13px] font-black uppercase tracking-[0.3em] text-slate-900 transition-colors">
+              <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${isScrolled ? 'bg-white' : 'bg-slate-900'}`} />
+              <span className={`text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] transition-colors duration-500 ${isScrolled ? 'text-white' : 'text-slate-900'}`}>
                 Siddharth
               </span>
-              <div className={`h-[1px] bg-slate-900 transition-all duration-500 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
             </a>
-          </div>
+          </m.div>
 
-          {/* CENTER: NAVIGATION ISLAND */}
-          <nav
-            className={`pointer-events-auto flex items-center gap-6 md:gap-10 px-8 py-3 rounded-full border transition-all duration-500 ${
-              isScrolled
-                ? "bg-white/80 backdrop-blur-xl border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
-                : "bg-white border-slate-100 shadow-sm"
-            }`}
-          >
+          {/* DYNAMIC NAVIGATION */}
+          <m.nav layout className="flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.slice(1);
+              const Icon = item.icon;
               
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  className={`relative flex items-center gap-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
-                    isActive
-                      ? "text-slate-900"
-                      : "text-slate-400 hover:text-slate-950"
-                  }`}
+                  className={`
+                    relative px-3 md:px-5 py-2 rounded-full transition-all duration-500 group
+                    ${isActive 
+                      ? (isScrolled ? "text-white" : "text-slate-900") 
+                      : (isScrolled ? "text-white/40 hover:text-white" : "text-slate-400 hover:text-slate-900")
+                    }
+                  `}
                 >
-                  {item.label}
+                  {/* Desktop Label: Only visible if NOT scrolled AND on medium screens+ */}
+                  <span className={`
+                    text-[9px] font-black uppercase tracking-[0.2em] relative z-10
+                    ${isScrolled ? 'hidden' : 'hidden md:block'}
+                  `}>
+                    {item.label}
+                  </span>
 
+                  {/* Icon: Visible when scrolled OR on mobile */}
+                  <span className={`
+                    relative z-10 p-1 
+                    ${isScrolled ? 'block' : 'block md:hidden'}
+                  `}>
+                    <Icon size={16} strokeWidth={isActive ? 2.5 : 2} />
+                  </span>
+                  
+                  {/* Active Background Transition */}
                   <AnimatePresence>
                     {isActive && (
                       <m.div
-                        layoutId="navIndicator"
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-slate-900 rounded-full"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        layoutId="islandHighlight"
+                        className={`absolute inset-0 rounded-full -z-0 ${isScrolled ? 'bg-white/10' : 'bg-slate-900/5'}`}
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
                   </AnimatePresence>
                 </a>
               );
             })}
-          </nav>
+          </m.nav>
 
-          {/* RIGHT SIDE: BALANCER */}
-          <div className="hidden md:block w-[80px]" />
-        </div>
-      </m.header> 
-      {/* Corrected the closing tag above to match <m.header> */}
+          {/* HIRE ME PILL: Hidden when island contracts or on mobile */}
+          {!isScrolled && (
+            <m.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="hidden lg:flex items-center pr-2"
+            >
+               <a 
+                href="#contact" 
+                className="px-5 py-2 bg-slate-900 rounded-full text-[9px] font-black text-white uppercase tracking-widest hover:bg-slate-800 transition-all"
+               >
+                 Let's Talk
+               </a>
+            </m.div>
+          )}
+        </m.div>
+      </m.header>
     </LazyMotion>
   );
 });

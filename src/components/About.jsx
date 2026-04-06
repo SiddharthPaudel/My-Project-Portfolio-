@@ -25,14 +25,14 @@ const About = () => {
       school: "Softwarica College",
       logo: "/softwarica.png",
       degree: "BSc (Hons) Computing",
-      date: "2022 — 2025",
-      status: "Completed",
+      date: "Dec 2022 — Dec 2025",
+      status: "Graduated",
     },
     {
       school: "Valmiki Shiksha Sadan",
       logo: "/valmiki.png",
       degree: "Grade 12 · Science",
-      date: "Graduated",
+      
     },
   ];
 

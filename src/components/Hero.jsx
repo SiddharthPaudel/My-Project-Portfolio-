@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaTerminal } from "react
 
 const SOCIAL_LINKS = [
   { icon: <FaGithub />, url: "https://github.com/SiddharthPaudel", label: "GitHub" },
-  { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/siddharth-paudel-53911032b/", label: "LinkedIn" },
+  { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/siddhartha-paudel-53911032b/", label: "LinkedIn" },
   { icon: <FaInstagram />, url: "https://www.instagram.com/cddharth_99/", label: "Instagram" },
   { icon: <FaWhatsapp />, url: "https://wa.me/9849800636", label: "WhatsApp" },
 ];

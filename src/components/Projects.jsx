@@ -95,12 +95,13 @@ const Projects = () => {
       image: Gamify,
     },
     {
-      title: "MangaZone",
-      desc: "A digital reader and rental platform featuring real-time availability and user library management.",
-      tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-      github: "https://github.com/SiddharthPaudel/MangaZone",
-      image: Manga,
+      title: "Finance Tracker",
+      desc: "A personal finance dashboard for visualizing expenses, setting budgets, and secure data storage.",
+      tech: ["React", "Express", "Chart.js"],
+      github: "https://github.com/SiddharthPaudel/Finance-Tracker",
+      image: finance,
     },
+    
     {
       title: "Business Finance MS",
       desc: "Comprehensive Next.js ERP for tracking business sales, financial audits, and automated reporting.",
@@ -116,11 +117,11 @@ const Projects = () => {
       image: Quick,
     },
     {
-      title: "Finance Tracker",
-      desc: "A personal finance dashboard for visualizing expenses, setting budgets, and secure data storage.",
-      tech: ["React", "Express", "Chart.js"],
-      github: "https://github.com/SiddharthPaudel/Finance-Tracker",
-      image: finance,
+      title: "MangaZone",
+      desc: "A digital reader and rental platform featuring real-time availability and user library management.",
+      tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+      github: "https://github.com/SiddharthPaudel/MangaZone",
+      image: Manga,
     },
     {
       title: "Portfolio",
