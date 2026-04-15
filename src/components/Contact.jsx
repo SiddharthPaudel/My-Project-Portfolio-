@@ -57,7 +57,7 @@ const Contact = () => {
                 </h3>
                 <p className="text-lg text-slate-500 max-w-md leading-relaxed">
                   I'm currently based in <span className="text-slate-900 font-medium">Nepal</span> and available for 
-                  freelance projects or full-time roles. If you have an idea, 
+                  freelance projects or remote roles. If you have an idea, 
                   let's make it a reality.
                 </p>
               </m.div>
