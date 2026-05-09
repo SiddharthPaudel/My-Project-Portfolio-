@@ -4,7 +4,7 @@ import { FaGithub, FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 
 // Import your project images
 import Tomo from "../images/tomo.png"; 
-import Consultancy from "../images/consultancy.png";
+import Consultancy from "../images/Consultancy.png";
 import Business from "../images/business.png";
 import Gamify from "../images/gamify.png";
 import Quick from "../images/quickStay.png";
