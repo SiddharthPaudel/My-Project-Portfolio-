@@ -13,10 +13,9 @@ const About = () => {
   const experience = [
     {
       company: "Khudkila Pvt. Ltd.",
-      logo: "/khudkila2.jpg", // Using your new cropped version
+      logo: "/khudkila2.jpg",
       role: "Full Stack Developer Intern",
-      date: "2026 — Present",
-      status: "Active",
+      date: "Feb 2026 — May 2026",
     }
   ];
 
@@ -32,7 +31,6 @@ const About = () => {
       school: "Valmiki Shiksha Sadan",
       logo: "/valmiki.png",
       degree: "Grade 12 · Science",
-      
     },
   ];
 
@@ -77,7 +75,7 @@ const About = () => {
             </div>
           </m.div>
 
-          {/* RIGHT SIDE: IMPROVED LOGO VISIBILITY */}
+          {/* RIGHT SIDE */}
           <m.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +94,6 @@ const About = () => {
               <div className="space-y-16">
                 {experience.map((exp, index) => (
                   <div key={index} className="flex flex-col sm:flex-row gap-8 group">
-                    {/* GIANT LOGO CONTAINER - Optimized for cropped images */}
                     <div className="flex-shrink-0 w-24 h-24 rounded-3xl bg-white border-2 border-slate-100 shadow-2xl flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 group-hover:scale-105">
                       <img 
                         src={exp.logo} 
@@ -109,9 +106,6 @@ const About = () => {
                     <div className="flex flex-col gap-1 justify-center">
                       <div className="flex items-center gap-3 flex-wrap">
                         <h4 className="text-xl font-black text-slate-900 tracking-tight">{exp.company}</h4>
-                        <span className="text-[9px] font-black bg-emerald-500 text-white px-3 py-1 rounded-full uppercase tracking-widest shadow-lg shadow-emerald-500/20">
-                          {exp.status}
-                        </span>
                       </div>
                       <p className="text-sm text-indigo-600 font-bold uppercase tracking-wider">{exp.role}</p>
                       <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-1">{exp.date}</span>
