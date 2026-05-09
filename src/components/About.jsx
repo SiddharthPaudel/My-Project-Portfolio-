@@ -18,6 +18,7 @@ const About = () => {
       date: "Feb 2026 — May 2026",
     }
   ];
+  
 
   const education = [
     {
