@@ -211,6 +211,7 @@ const Projects = () => {
       </section>
     </LazyMotion>
   );
+  
 };
 
 export default Projects;
