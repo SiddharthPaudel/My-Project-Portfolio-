@@ -2,17 +2,19 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
   ],
-  // Explicitly set the base path to ensure assets load correctly on your domain
+  // Base '/' ensures your assets are searched for at yourdomain.com.np/assets/
   base: '/', 
   build: {
-    // This ensures your output is clean and compatible with most hosting providers
     outDir: 'dist',
     assetsDir: 'assets',
+    // Generates a manifest file which helps with caching issues
+    manifest: true,
+    // Ensure the build is cleared before re-building
+    emptyOutDir: true,
   }
 })
