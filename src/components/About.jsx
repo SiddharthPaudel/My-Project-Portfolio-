@@ -31,7 +31,7 @@ const About = () => {
     {
       school: "Valmiki Shiksha Sadan",
       logo: "/valmiki.png",
-      degree: "Grade 12 ·  Science Stream",
+      degree: "Grade 12 · Science Stream",
     },
   ];
 
