@@ -113,7 +113,7 @@ const Projects = () => {
       title: "Namo Buddha Consultancy",
       desc: "A professional Japanese consultancy platform that guides students and workers through visa processing and documentation. Includes a built-in translation feature to make navigation easy for native speakers.",
       tech: ["React", "I18n", "Tailwind CSS"],
-      demo: "https://namobuddhachitwan.edu.np/", 
+      demo: "https://japaneseconsultancy.netlify.app/", 
       image: Consultancy,
     },
     {
